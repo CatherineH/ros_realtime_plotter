@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+
+ <!-- Load the RazBot's control configuration -->
+  <include file="$(find razbot_control)/launch/control.launch"/>
+
+  <!-- Start the Gazebo simulator, loading a world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find ros_realtime_plotter)/worlds/camera_above.world"/> <!-- world_name is wrt GAZEBO_RESOURCE_PATH environment variable -->
+  </include>
+
+  <!-- Send the RazBot Gazebo URDF to param server -->
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find razbot_gazebo)/urdf/razbot.gazebo.xacro'" />
+
+  <!-- Spawn RazBot in gazebo -->
+  <node name="spawn_razbot" pkg="gazebo_ros" type="spawn_model" args="-unpause -urdf -param robot_description -model razbot"/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <node name="ros_realtime_plotter" pkg="ros_realtime_plotter" type="RealTimePlotter.py" />
+
+</launch>
