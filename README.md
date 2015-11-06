@@ -47,5 +47,5 @@ roslaunch ros_realtime_plotter experiment.launch
 
 ## In Action
 
-![ScreenShot](http://img.youtube.com/vi/RlGKNKbqqQQ/0.jpg)](https://www.youtube.com/watch?v=RlGKNKbqqQQ)
+![ScreenShot](http://img.youtube.com/vi/vOZMjzghYhc/0.jpg)](https://www.youtube.com/watch?v=vOZMjzghYhc)
 

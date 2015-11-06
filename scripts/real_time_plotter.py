@@ -6,7 +6,7 @@ from geometry_msgs.msg import Twist
 from rospy import Publisher, Subscriber, init_node, sleep, spin
 from numpy import arange, NaN, empty
 from pandas import DataFrame
-from seaborn import violinplot
+from seaborn import violinplot, set_context
 import matplotlib.pyplot as plt
 
 
@@ -28,7 +28,7 @@ class RealTimePlotter(object):
 
 
         # initialize the ROS node
-        init_node('RealTimePlotter')
+        init_node('real_time_plotter')
         # initialize the velocity command publisher
         self.pub = Publisher(self.robot_topic+'/cmd_vel', Twist, queue_size=10)
         # initialize the subscriptions to data sources
@@ -41,10 +41,10 @@ class RealTimePlotter(object):
         self.last_gt = None
         self.errors = []
         self.curr_vel = None
-        self.min_vel = 0.25 # m/s
+        self.min_vel = 0.10 # m/s
         self.num_speeds = 4
         self.num_samples = 500
-        self.max_vel = 1.25 # m/s
+        self.max_vel = 0.5 # m/s
         self.radial_vel = 0.65 # rad/s
         self.my_mpl, self.ax = plt.subplots()
         self.ax.set_xlabel('Linear Speed (m/s)')
@@ -103,9 +103,11 @@ class RealTimePlotter(object):
                 # copy up to self.num_samples into dataframe
                 observations["%.2f" % speed][0:upper] = self.errors[0:upper]
                 # plot dataframe
-                self.ax.set_xlabel('Linear Speed (m/s)')
-                self.ax.set_ylabel('Error (mm/s)')
+                self.ax.set_xlabel('Linear Speed (m/s)',fontsize=16)
+                self.ax.set_ylabel('Error (mm/s)',fontsize=16)
+                self.ax.set_title('Currently driving at: %.2f m/s' % speed)
                 violinplot(data=observations)
+                set_context("notebook", font_scale=1.5, rc={"lines.linewidth": 2.5})
                 self.my_mpl.canvas.draw()
                 self.pub.publish(_twist)
                 sleep(0.01)
