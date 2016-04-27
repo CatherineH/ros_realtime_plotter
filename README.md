@@ -1,5 +1,10 @@
 # ros_realtime_plotter
-A demo of real-time data collection and plotting for the Robot Operating System in Python
+A demo of real-time data collection and plotting for the Robot Operating System in Python. This example was created for my talk at PyCon Canada 2015:
+
+
+[![ScreenShot](http://img.youtube.com/vi/oX294t9UYSw/0.jpg)](https://www.youtube.com/watch?v=oX294t9UYSw)
+
+For more a more detailed introduction on the Robotics Operating System, consider checking out [Clearpath Robotic's Excellent ROS tutorials](http://www.clearpathrobotics.com/2014/01/how-to-guide-ros-101/).
 
 ## Installation
 
