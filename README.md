@@ -4,7 +4,7 @@ A demo of real-time data collection and plotting for the Robot Operating System 
 
 [![ScreenShot](http://img.youtube.com/vi/oX294t9UYSw/0.jpg)](https://www.youtube.com/watch?v=oX294t9UYSw)
 
-For more a more detailed introduction on the Robotics Operating System, consider checking out [Clearpath Robotic's Excellent ROS tutorials](http://www.clearpathrobotics.com/2014/01/how-to-guide-ros-101/).
+For a more detailed introduction on the Robotics Operating System, consider checking out [Clearpath Robotic's Excellent ROS tutorials](http://www.clearpathrobotics.com/2014/01/how-to-guide-ros-101/).
 
 ## Installation
 
